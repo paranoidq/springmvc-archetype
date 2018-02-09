@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<!-- include header.vm-->
+<head th:replace="common/header :: header"/>
+<body>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-md-12 main">
+            <h5>This is index page!</h5>
+        </div>
+    </div>
+</div>
+
+<div th:include="common/footer :: footer" class="container-fluid footer"/>
+</body>
+</html>

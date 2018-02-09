@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+<!-- 项目整体信息-->
+    <groupId>me.springmvc</groupId>
+    <artifactId>springmvc-archetype</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <description>A springmvc web project archetype, including admin-end and front-end</description>
+
+<!-- profiles配置 -->
+    <!--<profiles>-->
+
+    <!--</profiles>-->
+
+<!-- 变量参数，可通过${xxx}的方式引用 -->
+    <properties>
+        <!-- 项目全局参数 -->
+        <proj.packageName>springmvc-archetype</proj.packageName>
+        <proj.compile.jdk>1.8</proj.compile.jdk>
+        <proj.target.jdk>1.8</proj.target.jdk>
+        <proj.encoding>UTF-8</proj.encoding>
+
+        <!-- mavn-compiler参数 -->
+        <mvn.plugins.dep.version>2.8</mvn.plugins.dep.version>
+        <mvn.plugins.complier.verion>2.3.2</mvn.plugins.complier.verion>
+        <mvn.plugins.war.version>2.1.1</mvn.plugins.war.version>
+
+        <!-- tomcat-maven插件参数 -->
+        <mvn.plugins.tomcat.version>2.2</mvn.plugins.tomcat.version>
+        <mvn.plugins.tomcat.deploy.url>http://localhost:8080/manager/text</mvn.plugins.tomcat.deploy.url>
+        <mvn.plugins.tomcat.deploy.username>paranoidq</mvn.plugins.tomcat.deploy.username>
+        <mvn.plugins.tomcat.deploy.password>88863650qw</mvn.plugins.tomcat.deploy.password>
+        <mvn.plugins.tomcat.deploy.rootpath>/springmvc-archetype</mvn.plugins.tomcat.deploy.rootpath>
+
+
+        <dep.servlet>3.1.0</dep.servlet>
+        <dep.spring>4.3.12.RELEASE</dep.spring>
+        <dep.aspectjweaver>1.5.4</dep.aspectjweaver>
+
+        <dep.commons-lang>2.6</dep.commons-lang>
+        <dep.commons-lang3>3.4</dep.commons-lang3>
+        <dep.commons-dbcp2>2.1.1</dep.commons-dbcp2>
+        <dep.commons-pool2>2.4.2</dep.commons-pool2>
+        <dep.commons-fileupload>1.2.1</dep.commons-fileupload>
+
+        <dep.log4j2>2.10.0</dep.log4j2>
+        <dep.slf4j-api>1.7.25</dep.slf4j-api>
+        <dep.disruptor>3.2.0</dep.disruptor>
+
+        <dep.mysql-connector>5.1.43</dep.mysql-connector>
+
+        <dep.mybatis>3.4.5</dep.mybatis>
+        <dep.mybatis-spring>1.3.1</dep.mybatis-spring>
+
+        <dep.thymeleaf>3.0.8.RELEASE</dep.thymeleaf>
+        <dep.unbescape>1.1.5.RELEASE</dep.unbescape>
+
+    </properties>
+
+<!-- 项目依赖-->
+    <dependencies>
+
+    <!-- j2ee相关依赖 -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${dep.servlet}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${dep.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${dep.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${dep.spring}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${dep.aspectjweaver}</version>
+        </dependency>
+
+    <!-- 通用依赖 -->
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${dep.commons-lang}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-dbcp2</artifactId>
+            <version>${dep.commons-dbcp2}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+            <version>${dep.commons-pool2}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>${dep.commons-fileupload}</version>
+        </dependency>
+
+    <!-- 日志依赖 -->
+        <!-- log4j2 -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>${dep.log4j2}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>${dep.log4j2}</version>
+        </dependency>
+        <!--slf4j-api -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${dep.slf4j-api}</version>
+        </dependency>
+        <!-- log4j2 slf4j binding -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j-impl</artifactId>
+            <version>${dep.log4j2}</version>
+        </dependency>
+        <!-- log4j2 commons-logging binding -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-jcl</artifactId>
+            <version>${dep.log4j2}</version>
+        </dependency>
+        <!-- 如需使用异步日志，需要包含disruptor依赖 -->
+        <dependency>
+            <groupId>com.lmax</groupId>
+            <artifactId>disruptor</artifactId>
+            <version>${dep.disruptor}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-web</artifactId>
+            <version>${dep.log4j2}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+    <!-- mysql jdbc -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${dep.mysql-connector}</version>
+        </dependency>
+
+    <!-- mybatis -->
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>${dep.mybatis}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis-spring</artifactId>
+            <version>${dep.mybatis-spring}</version>
+        </dependency>
+
+    <!-- thymeleaf -->
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf</artifactId>
+            <version>${dep.thymeleaf}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.thymeleaf</groupId>
+            <artifactId>thymeleaf-spring4</artifactId>
+            <version>${dep.thymeleaf}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.unbescape</groupId>
+            <artifactId>unbescape</artifactId>
+            <version>${dep.unbescape}</version>
+        </dependency>
+
+    </dependencies>
+
+
+<!-- 项目打包配置 -->
+    <build>
+        <!-- 编译输出目录, 默认值不建议修改 -->
+        <directory>${basedir}/target</directory>
+        <!-- 构建项目名称, 默认值 ${project.artifactId}-${project.version} -->
+        <finalName>${proj.packageName}</finalName>
+        <!-- 源码目录 -->
+        <sourceDirectory>src/main/java</sourceDirectory>
+        <!-- 测试源码目录 -->
+        <testSourceDirectory>/src/test/java</testSourceDirectory>
+        <!-- 源码输出目录 -->
+        <outputDirectory>target/classes</outputDirectory>
+        <!-- 测试源码输出目录 -->
+        <testOutputDirectory>target/test-classes</testOutputDirectory>
+
+        <!-- 单独过滤文件 -->
+        <filters>
+
+        </filters>
+
+
+        <!-- 项目资源路径列表-->
+        <resources>
+            <resource>
+                <!-- 描述存放资源的目录，该路径相对POM路径。默认值${basedir}/src/main/resources -->
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>false</filtering>
+
+                <!-- 打包时不被包含的文件和目录 -->
+                <excludes>
+                    <exclude>excludes/**.*</exclude>
+                </excludes>
+
+                <!-- 指定build后的resource存放的文件夹。该路径默认是basedir/target/classes。通常被打包在JAR中的resources的目标路径为META-INF -->
+                <targetPath>${basedir}/target/classes</targetPath>
+            </resource>
+        </resources>
+
+        <plugins>
+            <!-- maven插件依赖 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <version>${mvn.plugins.dep.version}</version>
+            </plugin>
+
+
+            <!-- maven编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${mvn.plugins.complier.verion}</version>
+                <configuration>
+                    <source>${proj.compile.jdk}</source>
+                    <target>${proj.target.jdk}</target>
+                    <encoding>${proj.encoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- war包打包插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${mvn.plugins.war.version}</version>
+                <configuration>
+                    <!-- 如果目录结构不符合maven约定, 需要指定web.xml位置和warSourceDirectory -->
+                    <webXml>${basedir}/src/main/webapp/WEB-INF/web.xml</webXml>
+                    <warSourceDirectory>${basedir}/src/main/webapp</warSourceDirectory>
+
+                    <!-- 配置web相关资源, 如jsp, img, js, css等 -->
+                    <webResources>
+                        <!-- 指定资源的build目录，默认build到${basedir}目录下-->
+                        <resource>
+                            <directory>${basedir}/src/main/webapp/resources/bootstrap</directory>
+                            <targetPath>resources/bootstrap</targetPath>
+                        </resource>
+
+                        <!-- 其他目录同样的方式配置，如默认则无需配置-->
+                        <!--<resource></resource>-->
+                    </webResources>
+
+                    <!-- webapp目录下编译时忽略的文件(夹) -->
+                    <warSourceExcludes>WEB-INF/excludes/**,</warSourceExcludes>
+                    <!-- webapp目录下打包时忽略的文件(夹) -->
+                    <packagingExcludes>WEB-INF/excludes/**,</packagingExcludes>
+                </configuration>
+            </plugin>
+
+
+            <!-- 本地tomcat部署配置 -->
+            <!-- mvn clean tomcat7:redeploy -X 可直接自动打包并部署到本机tomcat中-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>${mvn.plugins.tomcat.version}</version>
+                <configuration>
+                    <url>${mvn.plugins.tomcat.deploy.url}</url>
+                    <server>tomcat-deploy</server>
+                    <username>${mvn.plugins.tomcat.deploy.username}</username>
+                    <password>${mvn.plugins.tomcat.deploy.password}</password>
+                    <update>true</update>
+                    <path>${mvn.plugins.tomcat.deploy.rootpath}</path>
+                </configuration>
+            </plugin>
+
+        </plugins>
+
+    </build>
+</project>
