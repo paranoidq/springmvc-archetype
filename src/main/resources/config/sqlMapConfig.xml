@@ -3,6 +3,11 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <settings>
+        <!--
+            1. 开启二级缓存，默认关闭。二级缓存是mapper范围级别，除了在SqlMapConfig.xml设置二级缓存的总开关，还要在具体的mapper.xml中开启二级缓存。
+            2. mybatis二级缓存要求orm对象必须实现Serializable接口
+            3. 一级缓存基于mybatis session，默认开启
+        -->
         <setting name="cacheEnabled" value="true"/>
         <setting name="useGeneratedKeys" value="true"/>
         <setting name="defaultExecutorType" value="REUSE"/>

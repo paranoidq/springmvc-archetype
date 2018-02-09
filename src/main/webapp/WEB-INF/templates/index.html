@@ -9,7 +9,15 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-md-12 main">
-            <h5>This is index page!</h5>
+            <table class="table">
+                <tbody th:each="user:${users}">
+                    <tr>
+                        <td th:text="${user.id}"></td>
+                        <td th:text="${user.name}"></td>
+                        <td th:text="${user.password}"></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 </div>
