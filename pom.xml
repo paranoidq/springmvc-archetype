@@ -12,9 +12,30 @@
     <description>A springmvc web project archetype, including admin-end and front-end</description>
 
 <!-- profiles配置 -->
-    <!--<profiles>-->
-
-    <!--</profiles>-->
+    <profiles>
+        <profile>
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+            </properties>
+            <activation>
+                <!-- dev环境默认激活 -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <id>prod</id>
+            <properties>
+                <profiles.active>prod</profiles.active>
+            </properties>
+        </profile>
+        <profile>
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+            </properties>
+        </profile>
+    </profiles>
 
 <!-- 变量参数，可通过${xxx}的方式引用 -->
     <properties>
@@ -221,15 +242,26 @@
             <resource>
                 <!-- 描述存放资源的目录，该路径相对POM路径。默认值${basedir}/src/main/resources -->
                 <directory>${basedir}/src/main/resources</directory>
-                <filtering>false</filtering>
+                <filtering>true</filtering>
 
                 <!-- 打包时不被包含的文件和目录 -->
                 <excludes>
                     <exclude>excludes/**.*</exclude>
+
+                    <!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 -->
+                    <exclude>config/dev/*</exclude>
+                    <exclude>config/prod/*</exclude>
+                    <exclude>config/test/*</exclude>
                 </excludes>
 
                 <!-- 指定build后的resource存放的文件夹。该路径默认是basedir/target/classes。通常被打包在JAR中的resources的目标路径为META-INF -->
                 <targetPath>${basedir}/target/classes</targetPath>
+            </resource>
+
+            <!-- 根据profiles激活的目录单独采用配置 -->
+            <resource>
+                <directory>${basedir}/src/main/resources/config/${profiles.active}</directory>
+                <targetPath>${basedir}/target/classes/config</targetPath>
             </resource>
         </resources>
 
