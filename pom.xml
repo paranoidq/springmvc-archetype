@@ -60,6 +60,7 @@
 
         <dep.servlet>3.1.0</dep.servlet>
         <dep.spring>4.3.12.RELEASE</dep.spring>
+        <dep.spring-security>4.2.4.RELEASE</dep.spring-security>
         <dep.aspectjweaver>1.5.4</dep.aspectjweaver>
 
         <dep.commons-lang>2.6</dep.commons-lang>
@@ -110,6 +111,23 @@
             <groupId>org.aspectj</groupId>
             <artifactId>aspectjweaver</artifactId>
             <version>${dep.aspectjweaver}</version>
+        </dependency>
+
+    <!-- spring security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-core</artifactId>
+            <version>${dep.spring-security}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${dep.spring-security}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${dep.spring-security}</version>
         </dependency>
 
     <!-- 通用依赖 -->

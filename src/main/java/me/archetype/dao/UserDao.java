@@ -14,4 +14,6 @@ import java.util.List;
 public interface UserDao {
 
     List<User> selectAll();
+
+    User selectOne(String username);
 }

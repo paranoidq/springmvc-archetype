@@ -20,4 +20,9 @@ public class UserService {
     public List<User> getUserAll() {
         return userDao.selectAll();
     }
+
+
+    public User getUser(String username) {
+        return userDao.selectOne(username);
+    }
 }
