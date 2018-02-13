@@ -3,8 +3,8 @@
 
     <!-- 变量配置 -->
     <Properties>
-        <Property username="baseLogPath">logs/</Property>
-        <Property username="dailyLogFileName">daily</Property>
+        <Property name="baseLogPath">logs/</Property>
+        <Property name="dailyLogFileName">daily</Property>
     </Properties>
 
     <!-- appender配置 -->

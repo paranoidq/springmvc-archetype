@@ -67,6 +67,7 @@
         <dep.commons-lang3>3.4</dep.commons-lang3>
         <dep.commons-dbcp2>2.1.1</dep.commons-dbcp2>
         <dep.commons-pool2>2.4.2</dep.commons-pool2>
+        <dep.commons-codec>1.10</dep.commons-codec>
         <dep.commons-fileupload>1.2.1</dep.commons-fileupload>
 
         <dep.log4j2>2.10.0</dep.log4j2>
@@ -145,6 +146,11 @@
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-pool2</artifactId>
             <version>${dep.commons-pool2}</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-codec</groupId>
+            <artifactId>commons-codec</artifactId>
+            <version>${dep.commons-codec}</version>
         </dependency>
         <dependency>
             <groupId>commons-fileupload</groupId>
