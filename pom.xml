@@ -23,6 +23,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
+        <!--通过clean package -Pprod 指定特定的profile-->
         <profile>
             <id>prod</id>
             <properties>
